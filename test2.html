@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Website</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style2.css">
   </head>
 
   <body>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#catalog">Catalog</a>
-      <a href="#events">Events</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#" onclick="showAllSections()">Home</a>
+      <a href="#" onclick="showSection('about')">About Us</a>
+      <a href="#" onclick="showSection('events')">Course Reserve</a>
+      <a href="#" onclick="showSection('catalog')">Collections</a>
+      <a href="#" onclick="showSection('contact')">Services</a>
     </nav>
-
     <section id="catalog">
       <h2>Book Catalog</h2>
       <div class="carousel-container">
@@ -33,104 +34,149 @@
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 3</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 4</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 5</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 6</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 7</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 8</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 9</p>
           </div>
           <!-- Add more books here -->
           <div class="carousel-item">
             <img src="./imgs/71hwUY5ZmxL._AC_UL210_SR195,210_.jpg" alt="Book 2">
-            <p>Book Title 2</p>
+            <p>Book Title 10</p>
           </div>
           <!-- Add more books here -->
         </div>
       </div>
     </section>
 
-    <section id="home">
-      <h2>Welcome to our Library!</h2>
-      <p>Explore our vast collection of books and resources.</p>
-    </section>
+    <div class="library-sections">
+      <section id="home" class="library-section">
+        <h2>Welcome to our Library!</h2>
+        <p>Explore our vast collection of books and resources.</p>
+        <p>
+          On-site library hour <br>
+          Monday-Friday <br>
+          8:00 AM - 8:00 PM <br>
+          Saturday <br>
+          8:00 AM - 12:00 PM <br>
 
-    <section id="events">
-      <h2>Upcoming Events</h2>
-      <p>Discover exciting events happening at the library.</p>
-      <!-- Add event listings and details here -->
-    </section>
-
-    <section id="about">
-      <h2>About Us</h2>
-      <p>Learn more about our library and mission.</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Reach out to us for more information or assistance.</p>
-      <!-- Add contact form or details here -->
-    </section>
+          ON-Line Library Hours <br>
+          Monday - Friday <br>
+          8:00 AM - 5:00 PM <br>
+          Saturday <br>
+          8:00 AM - 12:00 PM
+        </p>
+      </section>
+      <section id="events" class="library-section">
+        <h2>Upcoming Events</h2>
+        <p>Discover exciting events happening at the library.</p>
+        <!-- Add event listings and details here -->
+      </section>
+      <section id="about" class="library-section">
+        <h2>About Us</h2>
+        <p>Learn more about our library and mission.</p>
+      </section>
+      <section id="contact" class="library-section">
+        <h2>Contact Us</h2>
+        <p>Reach out to us for more information or assistance.</p>
+        <div class="social-media">
+          <a href="https://www.facebook.com/">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:your.email@gmail.com">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+      </section>
+    </div>
 
     <footer>
       <p>&copy; 2023 Library Website</p>
     </footer>
 
     <script>
-        // JavaScript for the carousel
-        const track = document.getElementById('carouselTrack');
-        const items = document.querySelectorAll('.carousel-item');
+const track = document.getElementById('carouselTrack');
+const items = document.querySelectorAll('.carousel-item');
 
-        let index = 0;
+const clonedItems = Array.from(items).slice(0, 10).map(item => item.cloneNode(true));
+clonedItems.forEach(clonedItem => track.appendChild(clonedItem));
 
-        function updateCarousel() {
-            track.style.transform = `translateX(${-index * 10}%)`;
-        }
+let index = 0;
+const totalItems = items.length + clonedItems.length;
 
-        function nextSlide() {
-            if (index < items.length - 1) {
-                index++;
-            } else {
-                index = 0;
-            }
-            updateCarousel();
-        }
+function updateCarousel() {
+  track.style.transform = `translateX(${-index * 10}%)`;
+}
 
-        function prevSlide() {
-            if (index > 0) {
-                index--;
-            } else {
-                index = items.length - 1;
-            }
-            updateCarousel();
-        }
+function nextSlide() {
+  if (index < totalItems - 1) {
+    index++;
+  } else {
+    index = 0;
+  }
+  updateCarousel();
+}
 
-        setInterval(nextSlide, 3000); // Auto slide every 3 seconds
+function prevSlide() {
+  if (index > 0) {
+    index--;
+  } else {
+    index = totalItems - 1;
+  }
+  updateCarousel();
+}
+
+setInterval(nextSlide, 3000);
+
+function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the selected section
+      const selectedSection = document.getElementById(sectionId);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+    }
+
+    function showAllSections() {
+      // Show all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'block';
+      });
+    }
     </script>
 
   </body>
